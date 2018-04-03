@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="FireEmblem" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/FireEmblem" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="include/States" />
+					<Add directory="include/Engine" />
+					<Add directory="include/Input" />
+					<Add directory="include/Gameplay" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/FireEmblem" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="include/States" />
+					<Add directory="include/Engine" />
+					<Add directory="include/Input" />
+					<Add directory="include/Gameplay" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Engine/Drawable.h" />
+		<Unit filename="include/Engine/Game.h" />
+		<Unit filename="include/Engine/Window.h" />
+		<Unit filename="include/Gameplay/Board.h" />
+		<Unit filename="include/Gameplay/Button.h" />
+		<Unit filename="include/Gameplay/ComputerPlayer.h" />
+		<Unit filename="include/Gameplay/HumanPlayer.h" />
+		<Unit filename="include/Gameplay/Map.h" />
+		<Unit filename="include/Gameplay/Player.h" />
+		<Unit filename="include/Gameplay/Sprite.h" />
+		<Unit filename="include/Input/Controller.h" />
+		<Unit filename="include/Input/DevInput.h" />
+		<Unit filename="include/Input/InputDevice.h" />
+		<Unit filename="include/Input/Keyboard.h" />
+		<Unit filename="include/Input/Mouse.h" />
+		<Unit filename="include/List.h" />
+		<Unit filename="include/States/StateMachine.h" />
+		<Unit filename="include/States/State_Base.h" />
+		<Unit filename="include/States/State_Battle.h" />
+		<Unit filename="include/States/State_Editor.h" />
+		<Unit filename="include/States/State_MainMenu.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Engine/Drawable.cpp" />
+		<Unit filename="src/Engine/Game.cpp" />
+		<Unit filename="src/Engine/Window.cpp" />
+		<Unit filename="src/Gameplay/Board.cpp" />
+		<Unit filename="src/Gameplay/Button.cpp" />
+		<Unit filename="src/Gameplay/ComputerPlayer.cpp" />
+		<Unit filename="src/Gameplay/HumanPlayer.cpp" />
+		<Unit filename="src/Gameplay/Map.cpp" />
+		<Unit filename="src/Gameplay/Player.cpp" />
+		<Unit filename="src/Gameplay/Sprite.cpp" />
+		<Unit filename="src/Input/Controller.cpp" />
+		<Unit filename="src/Input/DevInput.cpp" />
+		<Unit filename="src/Input/InputDevice.cpp" />
+		<Unit filename="src/Input/Keyboard.cpp" />
+		<Unit filename="src/Input/Mouse.cpp" />
+		<Unit filename="src/States/StateMachine.cpp" />
+		<Unit filename="src/States/State_Base.cpp" />
+		<Unit filename="src/States/State_Battle.cpp" />
+		<Unit filename="src/States/State_Editor.cpp" />
+		<Unit filename="src/States/State_MainMenu.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

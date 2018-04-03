@@ -1,0 +1,259 @@
+# depslib dependency file v1.0
+1509289051 source:c:\users\deadvard\documents\codeblocks\fireemblem\main.cpp
+	"Game.h"
+
+1509370272 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\game.cpp
+	"Game.h"
+
+1509366914 c:\users\deadvard\documents\codeblocks\fireemblem\include\game.h
+	<SDL2/SDL.h>
+	"GameState.h"
+	"Map.h"
+	"Sprite.h"
+	"Camera.h"
+	"List.h"
+	<iostream>
+
+1509370140 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\drawable.cpp
+	"Drawable.h"
+
+1509363852 c:\users\deadvard\documents\codeblocks\fireemblem\include\drawable.h
+	<SDL2/SDL.h>
+	<SDL2/SDL_image.h>
+
+1509369933 c:\users\deadvard\documents\codeblocks\fireemblem\include\map.h
+	"Drawable.h"
+
+1509367620 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\sprite.cpp
+	"Sprite.h"
+
+1509367247 c:\users\deadvard\documents\codeblocks\fireemblem\include\sprite.h
+	"Drawable.h"
+
+1509370975 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\map.cpp
+	"Map.h"
+
+1509308178 c:\users\deadvard\documents\codeblocks\fireemblem\include\camera.h
+	<SDL2/SDL.h>
+
+1509303490 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\camera.cpp
+	"Camera.h"
+
+1509321636 c:\users\deadvard\documents\codeblocks\fireemblem\include\list.h
+
+1509312754 c:\users\deadvard\documents\codeblocks\fireemblem\include\gamestate.h
+	<SDL2/SDL.h>
+
+1509312510 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gamestate.cpp
+	"GameState.h"
+
+1509314553 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\selectable.cpp
+	"Selectable.h"
+
+1509314412 c:\users\deadvard\documents\codeblocks\fireemblem\include\selectable.h
+	<Drawable.h>
+
+1509321785 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\movable.cpp
+	"Movable.h"
+
+1509316444 c:\users\deadvard\documents\codeblocks\fireemblem\include\movable.h
+	"Selectable.h"
+	"Map.h"
+
+1509370969 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\board.cpp
+	"Board.h"
+
+1509370407 c:\users\deadvard\documents\codeblocks\fireemblem\include\board.h
+	"Map.h"
+
+1509369276 c:\users\deadvard\documents\codeblocks\fireemblem\include\piece.h
+	"Sprite.h"
+	"Board.h"
+
+1509326495 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\piece.cpp
+	"Piece.h"
+
+1509369417 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\player.cpp
+	"Player.h"
+
+1509369341 c:\users\deadvard\documents\codeblocks\fireemblem\include\player.h
+	"Board.h"
+	"Piece.h"
+
+1509452244 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\engine\camera.cpp
+	"Engine/Camera.h"
+
+1509447019 c:\users\deadvard\documents\codeblocks\fireemblem\include\engine\camera.h
+	"Window.h"
+
+1510085377 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\engine\drawable.cpp
+	"Engine/Drawable.h"
+
+1510085250 c:\users\deadvard\documents\codeblocks\fireemblem\include\engine\drawable.h
+	"Window.h"
+	<SDL2/SDL_image.h>
+	<SDL2/SDL_ttf.h>
+
+1510006825 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\engine\game.cpp
+	"Engine/Game.h"
+
+1509903365 c:\users\deadvard\documents\codeblocks\fireemblem\include\engine\game.h
+	<SDL2/SDL.h>
+	"States/State_Base.h"
+	"States/State_MainMenu.h"
+	"Gameplay/Map.h"
+	"Gameplay/Sprite.h"
+	"StateMachine.h"
+	"Mouse.h"
+	"Keyboard.h"
+	"Controller.h"
+	"DevInput.h"
+
+1509371819 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\map.h
+	"Engine/Drawable.h"
+
+1510083557 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\sprite.h
+	"Engine/Drawable.h"
+	"Board.h"
+
+1510088324 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\board.cpp
+	"Gameplay/Board.h"
+	<iostream>
+
+1510087898 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\board.h
+
+1509642116 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\map.cpp
+	"Gameplay/Map.h"
+
+1509886322 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\piece.cpp
+	"Gameplay/Piece.h"
+
+1509886340 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\piece.h
+	"Board.h"
+
+1510086048 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\player.cpp
+	"Gameplay/Player.h"
+
+1510086042 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\player.h
+	"Board.h"
+
+1510088091 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\sprite.cpp
+	"Gameplay/Sprite.h"
+	<iostream>
+
+1509372031 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\humanplayer.cpp
+	"Gameplay/HumanPlayer.h"
+
+1509815947 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\humanplayer.h
+	<Gameplay/Player.h>
+
+1509372073 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\computerplayer.cpp
+	"Gameplay/ComputerPlayer.h"
+
+1509372187 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\computerplayer.h
+	<Gameplay/Player.h>
+
+1509521876 c:\users\deadvard\documents\codeblocks\fireemblem\include\states\state_base.h
+	"Window.h"
+	"InputDevice.h"
+
+1509490780 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\states\state_base.cpp
+	"State_Base.h"
+
+1509794031 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\states\state_mainmenu.cpp
+	"State_MainMenu.h"
+	<iostream>
+
+1509565264 c:\users\deadvard\documents\codeblocks\fireemblem\include\states\state_mainmenu.h
+	"State_Base.h"
+	"Button.h"
+
+1509445815 c:\users\deadvard\documents\codeblocks\fireemblem\include\engine\engineobject.h
+	<SDL2/SDL.h>
+
+1509445540 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\engine\engineobject.cpp
+	"EngineObject.h"
+
+1509489542 c:\users\deadvard\documents\codeblocks\fireemblem\include\engine\window.h
+	<SDL2/SDL.h>
+
+1509559996 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\engine\window.cpp
+	"Window.h"
+
+1509490038 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\input\inputdevice.cpp
+	"InputDevice.h"
+
+1509555805 c:\users\deadvard\documents\codeblocks\fireemblem\include\input\inputdevice.h
+	<SDL2/SDL.h>
+
+1509990185 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\input\mouse.cpp
+	"Mouse.h"
+
+1509556837 c:\users\deadvard\documents\codeblocks\fireemblem\include\input\mouse.h
+	"InputDevice.h"
+	"Window.h"
+
+1509491479 c:\users\deadvard\documents\codeblocks\fireemblem\include\input\keyboard.h
+	"InputDevice.h"
+
+1509522614 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\input\keyboard.cpp
+	"Keyboard.h"
+
+1509522404 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\input\controller.cpp
+	"Controller.h"
+
+1509491427 c:\users\deadvard\documents\codeblocks\fireemblem\include\input\controller.h
+	"InputDevice.h"
+
+1509555687 c:\users\deadvard\documents\codeblocks\fireemblem\include\states\statemachine.h
+	"State_Base.h"
+	"State_Editor.h"
+	"State_MainMenu.h"
+	"State_Battle.h"
+
+1509543202 c:\users\deadvard\documents\codeblocks\fireemblem\include\input\devinput.h
+	"InputDevice.h"
+
+1509555842 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\input\devinput.cpp
+	"DevInput.h"
+
+1509561962 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\states\statemachine.cpp
+	"StateMachine.h"
+
+1509551955 c:\users\deadvard\documents\codeblocks\fireemblem\include\states\state_editor.h
+	"State_Base.h"
+	"Drawable.h"
+
+1509551901 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\states\state_editor.cpp
+	"State_Editor.h"
+
+1509999530 c:\users\deadvard\documents\codeblocks\fireemblem\include\states\state_battle.h
+	"State_Base.h"
+	"Gameplay/Map.h"
+	"Sprite.h"
+	"Board.h"
+
+1510088350 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\states\state_battle.cpp
+	"State_Battle.h"
+	<iostream>
+
+1509794097 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\button.cpp
+	"Button.h"
+
+1509566046 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\button.h
+	"Drawable.h"
+	"InputDevice.h"
+
+1509628797 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\pathfinding.cpp
+	"Pathfinding.h"
+
+1509628792 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\pathfinding.h
+	"Board.h"
+
+1509992687 source:c:\users\deadvard\documents\codeblocks\fireemblem\src\gameplay\character.cpp
+	"Character.h"
+
+1509986762 c:\users\deadvard\documents\codeblocks\fireemblem\include\gameplay\character.h
+	"Board.h"
+	"Sprite.h"
+
