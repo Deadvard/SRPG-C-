@@ -28,6 +28,16 @@ Board::~Board()
     delete this->positions;
 }
 
+void Board::clear()
+{
+    for(int x = 0; x < width; x++)
+    {
+        for(int y = 0; y < height; y++)
+        {
+            getPosition(x, y)->fastest = false;
+        }
+    }
+}
 
 Position* Board::getPosition(int x, int y) const
 {
@@ -51,6 +61,14 @@ Position* Board::moveTo(int fromX, int fromY, int toX, int toY) const
     return to;
 }
 
+void Board::calculateShortestPath(Position* to)
+{
+    while(to && (to->fromX > 0 || to->fromY > 0))
+    {
+        to->fastest = true;
+        to = getPosition(to->fromX, to->fromY);
+    }
+}
 
 void Board::showPath(int x, int y, int distance, int blocked)
 {
