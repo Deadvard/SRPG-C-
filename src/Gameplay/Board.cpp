@@ -34,7 +34,7 @@ void Board::clear()
     {
         for(int y = 0; y < height; y++)
         {
-            getPosition(x, y)->fastest = false;
+            getPosition(x, y)->fastest = Arrow::none;
         }
     }
 }
@@ -63,9 +63,59 @@ Position* Board::moveTo(int fromX, int fromY, int toX, int toY) const
 
 void Board::calculateShortestPath(Position* to)
 {
+    Arrow last = Arrow::none;
+
     while(to && (to->fromX > 0 || to->fromY > 0))
     {
-        to->fastest = true;
+
+        if(to->fromX == to->x && to->fromY > to->y)
+        {
+            switch(last)
+            {
+                case Arrow::down: to->fastest = Arrow::upDown; break;
+                case Arrow::right: to->fastest = Arrow::downRight; break;
+                case Arrow::left: to->fastest = Arrow::downLeft; break;
+                case Arrow::none:  to->fastest = Arrow::up; break;
+            }
+            last = Arrow::down;
+        }
+
+        else if(to->fromX == to->x && to->fromY < to->y)
+        {
+            switch(last)
+            {
+                case Arrow::up: to->fastest = Arrow::upDown; break;
+                case Arrow::right: to->fastest = Arrow::upRight; break;
+                case Arrow::left: to->fastest = Arrow::upLeft; break;
+                case Arrow::none:  to->fastest = Arrow::down; break;
+            }
+            last = Arrow::up;
+        }
+
+        else if(to->fromX > to->x && to->fromY == to->y)
+        {
+            switch(last)
+            {
+                case Arrow::down: to->fastest = Arrow::upRight; break;
+                case Arrow::up: to->fastest = Arrow::downRight; break;
+                case Arrow::left: to->fastest = Arrow::leftRight; break;
+                case Arrow::none:  to->fastest = Arrow::left; break;
+            }
+            last = Arrow::left;
+        }
+
+        else if(to->fromX < to->x && to->fromY == to->y)
+        {
+            switch(last)
+            {
+                case Arrow::down: to->fastest = Arrow::upLeft; break;
+                case Arrow::up: to->fastest = Arrow::downLeft; break;
+                case Arrow::right: to->fastest = Arrow::leftRight; break;
+                case Arrow::none:  to->fastest = Arrow::right; break;
+            }
+            last = Arrow::right;
+        }
+
         to = getPosition(to->fromX, to->fromY);
     }
 }

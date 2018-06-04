@@ -5,7 +5,7 @@ State_MainMenu::State_MainMenu(Window* window)
     : State_Base(window)
 {
     background.setWindow(window);
-    background.setTexture("menuBG.png");
+    background.setTexture("resources/menuBG.png");
     background.setRenderSize(1280,720);
 
 
@@ -14,7 +14,7 @@ State_MainMenu::State_MainMenu(Window* window)
     {
         buttons[i].setWindow(window);
 
-        buttons[i].setTexture("RGB.png");
+        buttons[i].setTexture("resources/RGB.png");
         buttons[i].setTexturePosition(i * 32, 0);
         buttons[i].setTextureSize(32, 32);
 

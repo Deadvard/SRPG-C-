@@ -4,7 +4,7 @@ State_Editor::State_Editor(Window* window)
     :State_Base(window)
 {
     background.setWindow(window);
-    background.setTexture("Editor_BG.png");
+    background.setTexture("resources/Editor_BG.png");
     background.setRenderSize(1280,720);
 }
 

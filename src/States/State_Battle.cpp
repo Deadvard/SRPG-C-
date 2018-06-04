@@ -14,7 +14,7 @@ State_Battle::State_Battle(Window* window)
     currentMap = Map();
     currentMap.setWindow(window);
     currentMap.setMapLayout(m, 50, 10);
-    currentMap.setTexture("tiles.png");
+    currentMap.setTexture("resources/tiles.png");
     currentMap.setRenderSize(32,32);
     currentMap.setTextureSize(32,32);
 
@@ -28,25 +28,32 @@ State_Battle::State_Battle(Window* window)
     board = new Board(n, 50,10);
 
     test.setWindow(window);
-    test.setTexture("RGB.png");
+    test.setTexture("resources/RGB.png");
     test.setTexturePosition(64,0);
     test.setTextureSize(32,32);
     test.setRenderSize(32,32);
     test.setRenderPosition(5 * 32,5 * 32);
 
     test2.setWindow(window);
-    test2.setTexture("hero.png");
+    test2.setTexture("resources/hero.png");
     test2.setTextureSize(32,32);
     test2.setRenderSize(32,32);
     test2.setRenderPosition(5 * 32,5 * 32);
     test2.setBoard(board);
 
     cursor.setWindow(window);
-    cursor.setTexture("cursor.png");
+    cursor.setTexture("resources/cursor.png");
     cursor.setTextureSize(32,32);
     cursor.setRenderSize(32,32);
     cursor.setRenderPosition(5 * 32,5 * 32);
     cursor.setBoard(board);
+
+    arrow.setWindow(window);
+    arrow.setTexture("resources/arrow.png");
+    arrow.setTextureSize(32,32);
+    arrow.setRenderSize(32,32);
+    arrow.setRenderPosition(5 * 32,5 * 32);
+    arrow.setBoard(board);
 
     stop = false;
     charpos = board->getPosition(5,5);
@@ -97,6 +104,8 @@ void State_Battle::update(float deltaTime, Input* input)
     board->calculateShortestPath(to);
 }
 
+
+
 void State_Battle::draw()
 {
     currentMap.draw();
@@ -105,17 +114,16 @@ void State_Battle::draw()
     {
         for(int j = 0; j < 10; j++)
         {
-            if(board->getPosition(i,j)->fastest)
+            if(board->getPosition(i,j)->fromX != -1)
             {
-                test.setTexturePosition(32, 0);
                 test.setRenderPosition(board->getPosition(i,j)->x * 32, board->getPosition(i,j)->y * 32);
                 test.draw();
             }
-            else if(board->getPosition(i,j)->fromX != -1)
+            if(board->getPosition(i,j)->fastest != Arrow::none)
             {
-                test.setTexturePosition(64, 0);
-                test.setRenderPosition(board->getPosition(i,j)->x * 32, board->getPosition(i,j)->y * 32);
-                test.draw();
+                arrow.setTexturePosition(32 * board->getPosition(i,j)->fastest, 0);
+                arrow.setRenderPosition(board->getPosition(i,j)->x * 32, board->getPosition(i,j)->y * 32);
+                arrow.draw();
             }
         }
     }
