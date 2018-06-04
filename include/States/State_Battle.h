@@ -20,6 +20,7 @@ private:
     Drawable test;
     Sprite test2;
     Sprite cursor;
+    Sprite arrow;
     Board* board;
     Position* charpos;
     bool stop;

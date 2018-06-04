@@ -1,6 +1,21 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+enum Arrow
+{
+    up,
+    down,
+    right,
+    left,
+    downLeft,
+    downRight,
+    upLeft,
+    upRight,
+    leftRight,
+    upDown,
+    none
+};
+
 struct Position
 {
     int weight = 0;
@@ -12,7 +27,7 @@ struct Position
     int fromX = 0;
     int fromY = 0;
 
-    bool fastest = false;
+    Arrow fastest = none;
 };
 
 class Board
