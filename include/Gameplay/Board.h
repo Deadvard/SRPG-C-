@@ -11,6 +11,8 @@ struct Position
     int y = 0;
     int fromX = 0;
     int fromY = 0;
+
+    bool fastest = false;
 };
 
 class Board
@@ -19,8 +21,12 @@ public:
     Board(int layout[], int width, int height);
     virtual ~Board();
 
+    void clear();
+
     Position* getPosition(int x, int y) const;
     Position* moveTo(int fromX, int fromY, int toX, int toY) const;
+
+    void calculateShortestPath(Position* to);
 
     void showPath(int x, int y, int distance, int blocked);
     void hidePath();

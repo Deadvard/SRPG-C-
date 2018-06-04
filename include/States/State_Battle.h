@@ -19,6 +19,7 @@ private:
     Map currentMap;
     Drawable test;
     Sprite test2;
+    Sprite cursor;
     Board* board;
     Position* charpos;
     bool stop;
