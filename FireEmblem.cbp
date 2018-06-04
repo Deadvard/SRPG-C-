@@ -13,11 +13,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add directory="include" />
-					<Add directory="include/States" />
-					<Add directory="include/Engine" />
-					<Add directory="include/Input" />
-					<Add directory="include/Gameplay" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -27,11 +22,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add directory="include" />
-					<Add directory="include/States" />
-					<Add directory="include/Engine" />
-					<Add directory="include/Input" />
-					<Add directory="include/Gameplay" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -39,9 +29,28 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-Wall" />
+			<Add option="-std=c++1z" />
+			<Add option="-m32" />
 			<Add option="-fexceptions" />
+			<Add directory="include" />
+			<Add directory="include/States" />
+			<Add directory="include/Engine" />
+			<Add directory="include/Input" />
+			<Add directory="include/Gameplay" />
+			<Add directory="external/include" />
 		</Compiler>
+		<Linker>
+			<Add option="-m32" />
+			<Add library="mingw32" />
+			<Add library="SDL2main" />
+			<Add library="SDL2" />
+			<Add library="SDL2_test" />
+			<Add library="SDL2_image" />
+			<Add library="SDL2_ttf" />
+			<Add directory="external/SDL2-2.0.8/i686-w64-mingw32/lib" />
+			<Add directory="external/SDL2_image-2.0.3/i686-w64-mingw32/lib" />
+			<Add directory="external/SDL2_ttf-2.0.14/i686-w64-mingw32/lib" />
+		</Linker>
 		<Unit filename="include/Engine/Drawable.h" />
 		<Unit filename="include/Engine/Game.h" />
 		<Unit filename="include/Engine/Window.h" />
