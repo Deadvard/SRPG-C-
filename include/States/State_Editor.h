@@ -1,17 +1,17 @@
 #ifndef STATE_EDITOR_H
 #define STATE_EDITOR_H
 
-#include "State_Base.h"
+#include "State.h"
 #include "Drawable.h"
 
 
-class State_Editor : public State_Base
+class State_Editor : public State
 {
 public:
     State_Editor(Window* window);
     virtual ~State_Editor();
 
-    virtual void update(float deltaTime, Input* input);
+    virtual void update(float deltaTime);
     virtual void draw();
 
 private:

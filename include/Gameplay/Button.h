@@ -14,7 +14,7 @@ public:
 
     void setTitle(char* newTitle);
 
-    void update(float deltaTime, Input* input);
+    void update(float deltaTime);
 
     bool buttonPressed() const;
     bool buttonReleased() const;

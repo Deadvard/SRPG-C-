@@ -1,16 +1,16 @@
 #ifndef STATE_MAINMENU_H
 #define STATE_MAINMENU_H
 
-#include "State_Base.h"
+#include "State.h"
 #include "Button.h"
 
-class State_MainMenu : public State_Base
+class State_MainMenu : public State
 {
 public:
     State_MainMenu(Window* window);
     virtual ~State_MainMenu();
 
-    virtual void update(float deltaTime, Input* input);
+    virtual void update(float deltaTime);
     virtual void draw();
 
 private:

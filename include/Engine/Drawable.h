@@ -13,8 +13,8 @@ public:
 
     void setWindow(Window* window);
 
-    void setTexture(char* filepath);
-    void setTexture(char* text, SDL_Color color);
+    void setTexture(const char* filepath);
+    void setTexture(const char* text, SDL_Color color);
 
     int getHeight();
     int getWidth();

@@ -10,6 +10,8 @@ public:
     Sprite();
     virtual ~Sprite();
 
+    void initialBoardPosition(int x, int y);
+
     void setBoard(Board* board);
     void setDistance(int distance);
     void setBlocked(int blocked);
@@ -18,7 +20,7 @@ public:
     void tryPosition(int x, int y);
     void update(float deltaTime);
 
-
+    bool selected;
 private:
     Board* board;
     Position* from;

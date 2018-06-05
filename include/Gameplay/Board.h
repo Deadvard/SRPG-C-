@@ -55,7 +55,7 @@ private:
     int width;
     int height;
 
-    void createPath(Position* from, Position* to);
+    void createPath(Position* from, Position* to, int blocked);
     void removePath(Position* from, Position* to);
 };
 
