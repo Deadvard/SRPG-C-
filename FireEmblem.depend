@@ -260,21 +260,16 @@
 1528138787 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\main.cpp
 	"Game.h"
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\engine\game.h
+1528211592 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\engine\game.h
 	<SDL2/SDL.h>
-	"States/State_Base.h"
+	"States/State.h"
 	"States/State_MainMenu.h"
 	"Gameplay/Map.h"
 	"Gameplay/Sprite.h"
-	"StateMachine.h"
-	"Mouse.h"
-	"Keyboard.h"
-	"Controller.h"
-	"DevInput.h"
+	"States/State_Battle.h"
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_base.h
+1528211389 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_base.h
 	"Window.h"
-	"InputDevice.h"
 
 1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\engine\window.h
 	<SDL2/SDL.h>
@@ -282,15 +277,15 @@
 1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\input\inputdevice.h
 	<SDL2/SDL.h>
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_mainmenu.h
-	"State_Base.h"
+1528211597 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_mainmenu.h
+	"State.h"
 	"Button.h"
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\button.h
+1528211159 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\button.h
 	"Drawable.h"
 	"InputDevice.h"
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\engine\drawable.h
+1528210600 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\engine\drawable.h
 	"Window.h"
 	<SDL2/SDL_image.h>
 	<SDL2/SDL_ttf.h>
@@ -298,11 +293,11 @@
 1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\map.h
 	"Engine/Drawable.h"
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\sprite.h
+1528234918 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\sprite.h
 	"Engine/Drawable.h"
 	"Board.h"
 
-1528146189 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\board.h
+1528235062 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\gameplay\board.h
 
 1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\statemachine.h
 	"State_Base.h"
@@ -310,12 +305,12 @@
 	"State_MainMenu.h"
 	"State_Battle.h"
 
-1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_editor.h
-	"State_Base.h"
+1528211617 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_editor.h
+	"State.h"
 	"Drawable.h"
 
-1528139709 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_battle.h
-	"State_Base.h"
+1528236335 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state_battle.h
+	"State.h"
 	"Gameplay/Map.h"
 	"Sprite.h"
 	"Board.h"
@@ -333,20 +328,20 @@
 1522756114 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\input\devinput.h
 	"InputDevice.h"
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\engine\drawable.cpp
+1528210611 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\engine\drawable.cpp
 	"Engine/Drawable.h"
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\engine\game.cpp
+1528236103 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\engine\game.cpp
 	"Engine/Game.h"
 
 1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\engine\window.cpp
 	"Window.h"
 
-1528146202 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\board.cpp
+1528235321 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\board.cpp
 	"Gameplay/Board.h"
 	<iostream>
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\button.cpp
+1528211186 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\button.cpp
 	"Button.h"
 
 1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\computerplayer.cpp
@@ -370,7 +365,7 @@
 1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\player.cpp
 	"Gameplay/Player.h"
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\sprite.cpp
+1528236609 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\gameplay\sprite.cpp
 	"Gameplay/Sprite.h"
 	<iostream>
 
@@ -389,17 +384,17 @@
 1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\input\mouse.cpp
 	"Mouse.h"
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_base.cpp
+1528211416 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_base.cpp
 	"State_Base.h"
 
-1528146181 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_battle.cpp
+1528236551 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_battle.cpp
 	"State_Battle.h"
 	<iostream>
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_editor.cpp
+1528211457 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_editor.cpp
 	"State_Editor.h"
 
-1522756114 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_mainmenu.cpp
+1528211467 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state_mainmenu.cpp
 	"State_MainMenu.h"
 	<iostream>
 
@@ -1095,4 +1090,10 @@
 	"SDL.h"
 	"begin_code.h"
 	"close_code.h"
+
+1528211389 c:\users\deadvard\documents\codeblocks\srpg-cpp-master\include\states\state.h
+	"Window.h"
+
+1528211611 source:c:\users\deadvard\documents\codeblocks\srpg-cpp-master\src\states\state.cpp
+	"State.h"
 

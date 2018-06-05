@@ -47,9 +47,8 @@
 			<Add library="SDL2_test" />
 			<Add library="SDL2_image" />
 			<Add library="SDL2_ttf" />
-			<Add directory="external/SDL2-2.0.8/i686-w64-mingw32/lib" />
-			<Add directory="external/SDL2_image-2.0.3/i686-w64-mingw32/lib" />
-			<Add directory="external/SDL2_ttf-2.0.14/i686-w64-mingw32/lib" />
+			<Add library="SDL2_mixer" />
+			<Add directory="external/lib" />
 		</Linker>
 		<Unit filename="include/Engine/Drawable.h" />
 		<Unit filename="include/Engine/Game.h" />
@@ -67,8 +66,7 @@
 		<Unit filename="include/Input/Keyboard.h" />
 		<Unit filename="include/Input/Mouse.h" />
 		<Unit filename="include/List.h" />
-		<Unit filename="include/States/StateMachine.h" />
-		<Unit filename="include/States/State_Base.h" />
+		<Unit filename="include/States/State.h" />
 		<Unit filename="include/States/State_Battle.h" />
 		<Unit filename="include/States/State_Editor.h" />
 		<Unit filename="include/States/State_MainMenu.h" />
@@ -88,8 +86,7 @@
 		<Unit filename="src/Input/InputDevice.cpp" />
 		<Unit filename="src/Input/Keyboard.cpp" />
 		<Unit filename="src/Input/Mouse.cpp" />
-		<Unit filename="src/States/StateMachine.cpp" />
-		<Unit filename="src/States/State_Base.cpp" />
+		<Unit filename="src/States/State.cpp" />
 		<Unit filename="src/States/State_Battle.cpp" />
 		<Unit filename="src/States/State_Editor.cpp" />
 		<Unit filename="src/States/State_MainMenu.cpp" />
