@@ -2,7 +2,7 @@
 #include <iostream>
 
 State_Battle::State_Battle(Window* window)
-    : State_Base(window)
+    : State(window)
 {
     int m[500];
     for(int i = 0; i < 500; i++)
@@ -34,13 +34,6 @@ State_Battle::State_Battle(Window* window)
     test.setRenderSize(32,32);
     test.setRenderPosition(5 * 32,5 * 32);
 
-    test2.setWindow(window);
-    test2.setTexture("resources/hero.png");
-    test2.setTextureSize(32,32);
-    test2.setRenderSize(32,32);
-    test2.setRenderPosition(5 * 32,5 * 32);
-    test2.setBoard(board);
-
     cursor.setWindow(window);
     cursor.setTexture("resources/cursor.png");
     cursor.setTextureSize(32,32);
@@ -55,56 +48,72 @@ State_Battle::State_Battle(Window* window)
     arrow.setRenderPosition(5 * 32,5 * 32);
     arrow.setBoard(board);
 
+    spritesCount = 10;
+    sprites = new Sprite[spritesCount];
+
+    for(int i = 0; i < spritesCount; i++)
+    {
+        sprites[i].setWindow(window);
+        sprites[i].setTexture("resources/hero.png");
+        sprites[i].setTextureSize(32,32);
+        sprites[i].setRenderSize(32,32);
+        sprites[i].setBoard(board);
+        sprites[i].setBlocked(i + 1);
+        sprites[i].initialBoardPosition((3 + i), 3);
+    }
+
     stop = false;
-    charpos = board->getPosition(5,5);
-    //board->showPath(5,5,10,1);
-    selected = false;
+    selected = nullptr;
 }
 
 State_Battle::~State_Battle()
 {
     delete board;
-    //dtor
+    delete[] sprites;
 }
 
-void State_Battle::update(float deltaTime, Input* input)
+void State_Battle::onCursorMoved(int x, int y)
 {
     board->clear();
+    cursor.setRenderPosition((x / 32) * 32, (y / 32) * 32);
 
-    test2.update(deltaTime);
-
-    cursor.setRenderPosition((int)(input->worldX/32) * 32, (int)(input->worldY/32) * 32);
-
-    if(input->select == Input::pressed)
-    {
-        if(!stop)
-        {
-            if(!selected)
-            {
-                test2.select(input->worldX,input->worldY);
-                selected = true;
-            }
-
-
-            if(selected)
-            {
-                test2.tryPosition((int)(input->worldX/32), (int)(input->worldY/32));
-                selected = false;
-            }
-
-            stop = true;
-        }
-    }
-    else
-    {
-        stop = false;
-    }
-
-    Position* to = board->getPosition((int)(input->worldX/32), (int)(input->worldY/32));
+    Position* to = board->getPosition(x / 32, y / 32);
     board->calculateShortestPath(to);
 }
 
+void State_Battle::onSelect(int x, int y)
+{
+    if(selected)
+    {
+        selected->tryPosition(x / 32, y / 32);
+        selected->selected = false;
+    }
 
+    for(int i = 0; i < spritesCount; i++)
+    {
+        if(!sprites[i].selected)
+        {
+            sprites[i].select(x, y);
+            if(sprites[i].selected)
+            {
+                selected = &sprites[i];
+            }
+        }
+    }
+}
+
+void State_Battle::onCancel(int x, int y)
+{
+
+}
+
+void State_Battle::update(float deltaTime)
+{
+    for(int i = 0; i < spritesCount; i++)
+    {
+        sprites[i].update(deltaTime);
+    }
+}
 
 void State_Battle::draw()
 {
@@ -127,6 +136,10 @@ void State_Battle::draw()
             }
         }
     }
-    test2.draw();
+
+    for(int i = 0; i < spritesCount; i++)
+    {
+        sprites[i].draw();
+    }
     cursor.draw();
 }

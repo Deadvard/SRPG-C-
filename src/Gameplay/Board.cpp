@@ -130,12 +130,11 @@ void Board::showPath(int x, int y, int distance, int blocked)
         path->fromX = none;
         path->fromY = none;
         path->distance = distance;
-        path->blocked = blocked;
 
-        createPath(path, getPosition(path->x - 1, path->y));
-        createPath(path, getPosition(path->x, path->y - 1));
-        createPath(path, getPosition(path->x + 1, path->y));
-        createPath(path, getPosition(path->x, path->y + 1));
+        createPath(path, getPosition(path->x - 1, path->y), blocked);
+        createPath(path, getPosition(path->x, path->y - 1), blocked);
+        createPath(path, getPosition(path->x + 1, path->y), blocked);
+        createPath(path, getPosition(path->x, path->y + 1), blocked);
     }
 }
 
@@ -164,7 +163,7 @@ void Board::hidePath()
     }
 }
 
-void Board::createPath(Position* from, Position* to)
+void Board::createPath(Position* from, Position* to, int blocked)
 {
     if(to)
     {
@@ -172,16 +171,15 @@ void Board::createPath(Position* from, Position* to)
         {
             to->distance = from->distance - to->weight;
 
-            if(to->distance >= 0 && (to->blocked == none || from->blocked == to->blocked))
+            if(to->distance >= 0 && (to->blocked == none || blocked == to->blocked))
             {
                 to->fromX = from->x;
                 to->fromY = from->y;
-                to->blocked = from->blocked;
 
-                createPath(to, getPosition(to->x - 1, to->y));
-                createPath(to, getPosition(to->x, to->y - 1));
-                createPath(to, getPosition(to->x + 1, to->y));
-                createPath(to, getPosition(to->x, to->y + 1));
+                createPath(to, getPosition(to->x - 1, to->y), blocked);
+                createPath(to, getPosition(to->x, to->y - 1), blocked);
+                createPath(to, getPosition(to->x + 1, to->y), blocked);
+                createPath(to, getPosition(to->x, to->y + 1), blocked);
             }
         }
     }
@@ -208,8 +206,6 @@ void Board::removePath(Position* from, Position* to)
 
             to->fromX = none;
             to->fromY = none;
-            to->distance = none;
-            to->blocked = none;
         }
     }
 }

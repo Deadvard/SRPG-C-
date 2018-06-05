@@ -7,6 +7,7 @@ Sprite::Sprite()
     from = nullptr;
     to = nullptr;
     distance = 10;
+
     blocked = -1;
 
     frameTime = 0.25f;
@@ -15,18 +16,31 @@ Sprite::Sprite()
     startFrame = 0;
     stopFrame = 1;
     speed = 0.1;
-    newX = 5 * 32;
-    newY = 5 * 32;
+    newX = 0;
+    newY = 0;
 
     timeSinceMoveX = 0.0f;
     timeSinceMoveY = 0.0f;
     moveStartX = 0.0f;
     moveStartY = 0.0f;
+
+    selected = false;
 }
 
 Sprite::~Sprite()
 {
     //dtor
+}
+
+void Sprite::initialBoardPosition(int x, int y)
+{
+    newX = x * 32;
+    newY = y * 32;
+    setRenderPosition(x * getRenderW() * 32, y * getRenderH() * 32);
+    if(board && board->getPosition(x, y))
+    {
+        board->getPosition(x, y)->blocked = blocked;
+    }
 }
 
 void Sprite::setBoard(Board* board)
@@ -51,6 +65,7 @@ void Sprite::select(int x, int y)
     {
         from = board->getPosition(getRenderX()/getRenderW(),getRenderY()/getRenderH());
         board->showPath(from->x, from->y, distance, blocked);
+        selected = true;
     }
 
 }
@@ -63,9 +78,9 @@ void Sprite::tryPosition(int x, int y)
         if(to && to->fromX == -1)
         {
             to = nullptr;
+            board->hidePath();
         }
     }
-
 }
 
 void Sprite::update(float deltaTime)

@@ -42,7 +42,7 @@ void Drawable::setWindow(Window* window)
     this->window = window;
 }
 
-void Drawable::setTexture(char* filepath)
+void Drawable::setTexture(const char* filepath)
 {
     if(texture)
     {
@@ -60,7 +60,7 @@ void Drawable::setTexture(char* filepath)
     textureRect.h = height;
 }
 
-void Drawable::setTexture(char* text, SDL_Color color)
+void Drawable::setTexture(const char* text, SDL_Color color)
 {
     if(texture)
     {

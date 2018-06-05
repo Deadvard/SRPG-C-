@@ -17,8 +17,11 @@ void Button::setTitle(char* newTitle)
     setTexture(title, Drawable::COLOR_WHITE);
 }
 
-void Button::update(float deltaTime, Input* input)
+void Button::update(float deltaTime)
 {
+    Input inp;
+    Input* input = &inp;
+
     if(contains(input->screenX, input->screenY))
     {
         setTexturePosition(32,0);

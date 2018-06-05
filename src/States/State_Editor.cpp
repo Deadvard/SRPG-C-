@@ -1,7 +1,7 @@
 #include "State_Editor.h"
 
 State_Editor::State_Editor(Window* window)
-    :State_Base(window)
+    :State(window)
 {
     background.setWindow(window);
     background.setTexture("resources/Editor_BG.png");
@@ -13,7 +13,7 @@ State_Editor::~State_Editor()
     //dtor
 }
 
-void State_Editor::update(float deltaTime, Input* input)
+void State_Editor::update(float deltaTime)
 {
 
 }

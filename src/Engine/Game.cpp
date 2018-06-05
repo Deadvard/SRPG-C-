@@ -13,22 +13,15 @@ Game::Game()
     window = new Window();
     window->setFullscreen(1);
 
-    mouse = new Mouse();
-    mouse->setWindow(window);
-    keyboard = new Keyboard();
-    controller = new Controller();
-    devInput = new DevInput();
-
     TTF_Init();
     font16 = TTF_OpenFont("arial.ttf", 16);
     font32 = TTF_OpenFont("arial.ttf", 32);
     font64 = TTF_OpenFont("arial.ttf", 64);
 
     Drawable::setFonts(font16, font32, font64);
-    states.setWindow(window);
 
-    input.state = Input::push.mainMenu;
-    states.push(&input);
+    current = new State_Battle(window);
+
 }
 
 Game::~Game()
@@ -37,10 +30,7 @@ Game::~Game()
     TTF_CloseFont(font32);
     TTF_CloseFont(font64);
     TTF_Quit();
-    delete mouse;
     delete window;
-    delete controller;
-    delete devInput;
     SDL_Quit();
 }
 
@@ -56,17 +46,7 @@ void Game::run()
         if(deltaTime >= 1.0/60.0f)
         {
             handleEvent();
-            mouse->update(deltaTime, &input);
-
-            if(input.state == Input::pop)
-            {
-                input.state = 0;
-                states.pop();
-            }
-            states.push(&input);
-
-            states.peek()->update(deltaTime, &input);
-
+            current->update(deltaTime);
             render();
 
             deltaTime = 0.0f;
@@ -77,18 +57,27 @@ void Game::run()
 void Game::handleEvent()
 {
     SDL_Event event;
-    if(SDL_PollEvent(&event))
+    while(SDL_PollEvent(&event))
     {
         window->handleEvent(&event);
 
-        mouse->handleInput(&event, &input);
-        keyboard->handleInput(&event, &input);
-        controller->handleInput(&event, &input);
-        devInput->handleInput(&event, &input);
-
-        if(event.type == SDL_QUIT || input.quit == Input::pressed)
+        if(event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)
         {
             quit = true;
+        }
+
+        if(event.motion.type == SDL_MOUSEMOTION)
+        {
+            const int mouseX = window->scaledX(event.motion.x);
+            const int mouseY = window->scaledY(event.motion.y);
+            current->onCursorMoved(mouseX, mouseY);
+        }
+
+        if(event.button.button == SDL_BUTTON_LEFT /*&& event.button.state == SDL_RELEASED*/)
+        {
+            const int mouseX = window->scaledX(event.button.x);
+            const int mouseY = window->scaledY(event.button.y);
+            current->onSelect(mouseX, mouseY);
         }
     }
 }
@@ -96,6 +85,6 @@ void Game::handleEvent()
 void Game::render()
 {
     SDL_RenderClear(window->getRenderer());
-    states.peek()->draw();
+    current->draw();
     SDL_RenderPresent(window->getRenderer());
 }

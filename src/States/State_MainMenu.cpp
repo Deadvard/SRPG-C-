@@ -2,7 +2,7 @@
 #include <iostream>
 
 State_MainMenu::State_MainMenu(Window* window)
-    : State_Base(window)
+    : State(window)
 {
     background.setWindow(window);
     background.setTexture("resources/menuBG.png");
@@ -28,11 +28,11 @@ State_MainMenu::~State_MainMenu()
     //dtor
 }
 
-void State_MainMenu::update(float deltaTime, Input* input)
+void State_MainMenu::update(float deltaTime)
 {
     for(int i = 0; i < 3; i++)
     {
-        buttons[i].update(deltaTime, input);
+        buttons[i].update(deltaTime);
     }
 
     if(buttons[0].buttonReleased())
@@ -45,7 +45,7 @@ void State_MainMenu::update(float deltaTime, Input* input)
     }
     if(buttons[2].buttonReleased())
     {
-        input->quit = Input::pressed;
+
     }
 }
 
