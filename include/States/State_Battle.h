@@ -24,11 +24,12 @@ private:
     Sprite* sprites;
     int spritesCount;
 
+    int turn;
+
     Drawable test;
     Sprite cursor;
     Sprite arrow;
     Board* board;
-    bool stop;
     Sprite* selected;
 };
 

@@ -42,9 +42,10 @@ public:
     Position* moveTo(int fromX, int fromY, int toX, int toY) const;
 
     void calculateShortestPath(Position* to);
+    Position* calculateRange(Position* to, int range);
 
     void showPath(int x, int y, int distance, int blocked);
-    void hidePath();
+    void hidePath(int blocked);
 
 
 private:

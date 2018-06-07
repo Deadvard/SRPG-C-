@@ -3,12 +3,16 @@
 
 #include "Engine/Drawable.h"
 #include "Board.h"
+#include "Equipment.hpp"
 
 class Sprite : public Drawable
 {
 public:
     Sprite();
     virtual ~Sprite();
+
+    bool isMoving() const;
+    bool isTeam(int team) const;
 
     void initialBoardPosition(int x, int y);
 
@@ -20,13 +24,35 @@ public:
     void tryPosition(int x, int y);
     void update(float deltaTime);
 
+    int dealDamage() const;
+    void takeDamage(int damage);
+
     bool selected;
+
 private:
+    static const int inventorySize = 5;
+    Equipment inventory[inventorySize];
+    int equipped;
+
+    int experience;
+    int level;
+    int health;
+
+    int strength;
+    int magic;
+    int skill;
+    int speedstat;
+    int luck;
+    int defense;
+    int resistance;
+
     Board* board;
     Position* from;
     Position* to;
+    int movementLeft;
     int distance;
     int blocked;
+    int range;
     float timeSinceMoveX;
     float timeSinceMoveY;
 
@@ -49,8 +75,8 @@ private:
     void startMove();
     void moveSprite(float deltaTime);
     void nextFrame(float deltaTime);
-
-
 };
+
+void battle(Sprite& left, Sprite& right);
 
 #endif // SPRITE_H
