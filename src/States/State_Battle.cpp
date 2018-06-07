@@ -58,12 +58,12 @@ State_Battle::State_Battle(Window* window)
         sprites[i].setTextureSize(32,32);
         sprites[i].setRenderSize(32,32);
         sprites[i].setBoard(board);
-        sprites[i].setBlocked(i + 1);
+        sprites[i].setBlocked((i + 1) % 2);
         sprites[i].initialBoardPosition((3 + i), 3);
     }
 
-    stop = false;
     selected = nullptr;
+    turn = 0;
 }
 
 State_Battle::~State_Battle()
@@ -78,6 +78,12 @@ void State_Battle::onCursorMoved(int x, int y)
     cursor.setRenderPosition((x / 32) * 32, (y / 32) * 32);
 
     Position* to = board->getPosition(x / 32, y / 32);
+
+    if(to && to->blocked != -1)
+    {
+        to = board->calculateRange(to, 3);
+    }
+
     board->calculateShortestPath(to);
 }
 
@@ -86,20 +92,37 @@ void State_Battle::onSelect(int x, int y)
     if(selected)
     {
         selected->tryPosition(x / 32, y / 32);
+
+        if(selected->selected)
+        {
+            for(int i = 0; i < spritesCount; i++)
+            {
+                if(&sprites[i] != selected && sprites[i].contains(x, y))
+                {
+                    battle(*selected, sprites[i]);
+                }
+            }
+            //turn = (turn + 1) % 2;
+        }
+
         selected->selected = false;
     }
 
-    for(int i = 0; i < spritesCount; i++)
+    if((selected && !selected->isMoving()) || !selected)
     {
-        if(!sprites[i].selected)
+        for(int i = 0; i < spritesCount; i++)
         {
-            sprites[i].select(x, y);
-            if(sprites[i].selected)
+            if(!sprites[i].selected && sprites[i].isTeam(turn + 1))
             {
-                selected = &sprites[i];
+                sprites[i].select(x, y);
+                if(sprites[i].selected)
+                {
+                    selected = &sprites[i];
+                }
             }
         }
     }
+
 }
 
 void State_Battle::onCancel(int x, int y)

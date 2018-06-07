@@ -7,8 +7,9 @@ Sprite::Sprite()
     from = nullptr;
     to = nullptr;
     distance = 10;
-
+    movementLeft = 3;
     blocked = -1;
+    range = 3;
 
     frameTime = 0.25f;
     timeSinceFrame = 0.0f;
@@ -25,11 +26,35 @@ Sprite::Sprite()
     moveStartY = 0.0f;
 
     selected = false;
+
+    equipped = 0;
+
+    experience = 0;
+    level = 1;
+    health = 10;
+
+    strength = 1;
+    magic = 1;
+    skill = 1;
+    speedstat = 1;
+    luck = 1;
+    defense = 1;
+    resistance = 1;
 }
 
 Sprite::~Sprite()
 {
     //dtor
+}
+
+bool Sprite::isMoving() const
+{
+    return to;
+}
+
+bool Sprite::isTeam(int team) const
+{
+    return blocked == team && movementLeft > 0;
 }
 
 void Sprite::initialBoardPosition(int x, int y)
@@ -46,7 +71,6 @@ void Sprite::initialBoardPosition(int x, int y)
 void Sprite::setBoard(Board* board)
 {
     this->board = board;
-    //from = board->getPosition(5,5);
 }
 
 void Sprite::setDistance(int distance)
@@ -64,10 +88,12 @@ void Sprite::select(int x, int y)
     if(contains(x,y))
     {
         from = board->getPosition(getRenderX()/getRenderW(),getRenderY()/getRenderH());
-        board->showPath(from->x, from->y, distance, blocked);
-        selected = true;
+        if(from)
+        {
+            board->showPath(from->x, from->y, distance, blocked);
+            selected = true;
+        }
     }
-
 }
 
 void Sprite::tryPosition(int x, int y)
@@ -75,10 +101,15 @@ void Sprite::tryPosition(int x, int y)
     if(!to)
     {
         to = board->getPosition(x,y);
-        if(to && to->fromX == -1)
+        if(to && to->fromX == -1 && to->blocked != -1 && to->blocked != blocked)
+        {
+            to = board->calculateRange(to, range);
+        }
+
+        if(to && (to->fromX == -1 || to->blocked != -1))
         {
             to = nullptr;
-            board->hidePath();
+            board->hidePath(blocked);
         }
     }
 }
@@ -101,6 +132,7 @@ void Sprite::moveTo(int x, int y)
     newY = y;
     moveStartX = getRenderX();
     moveStartY = getRenderY();
+    movementLeft--;
 }
 
 void Sprite::startMove()
@@ -111,8 +143,9 @@ void Sprite::startMove()
         {
             if(from == to)
             {
+                board->hidePath(-1);
+                to->blocked = blocked;
                 to = nullptr;
-                board->hidePath();
             }
             else
             {
@@ -170,4 +203,24 @@ void Sprite::nextFrame(float deltaTime)
         const int tilesW = getWidth() / getRenderW();
         setTexturePosition(getTextureW() * (currentFrame % tilesW), getTextureH() * (currentFrame / tilesW));
     }
+}
+
+int Sprite::dealDamage() const
+{
+    return strength;
+}
+
+void Sprite::takeDamage(int damage)
+{
+    health = health - damage;
+}
+
+void battle(Sprite& left, Sprite& right)
+{
+
+    right.takeDamage(left.dealDamage());
+    std::cout << "Left dealt: "<< left.dealDamage() << " damage!" << std::endl;
+
+    left.takeDamage(right.dealDamage());
+    std::cout << "Right dealt: "<< right.dealDamage() << " damage!" << std::endl;
 }

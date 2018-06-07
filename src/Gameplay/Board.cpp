@@ -120,9 +120,42 @@ void Board::calculateShortestPath(Position* to)
     }
 }
 
+Position* Board::calculateRange(Position* to, int range)
+{
+    Position* result = to;
+    range--;
+
+    if(result && result->fromX == none && range >= 0)
+    {
+
+        result = calculateRange(getPosition(result->x - 1, result->y), range);
+        result = result ? result : to;
+    }
+
+    if(result && result->fromX == none && range >= 0)
+    {
+        result = calculateRange(getPosition(result->x, result->y - 1), range);
+        result = result && result->fromX != none ? result : to;
+    }
+
+    if(result && result->fromX == none && range >= 0)
+    {
+        result = calculateRange(getPosition(result->x + 1, result->y), range);
+        result = result && result->fromX != none ? result : to;
+    }
+
+    if(result && result->fromX == none && range >= 0)
+    {
+        result = calculateRange(getPosition(result->x, result->y + 1), range);
+        result = result && result->fromX != none ? result : to;
+    }
+
+    return result;
+}
+
 void Board::showPath(int x, int y, int distance, int blocked)
 {
-    hidePath();
+    hidePath(blocked);
     path = getPosition(x, y);
 
     if(path)
@@ -130,6 +163,7 @@ void Board::showPath(int x, int y, int distance, int blocked)
         path->fromX = none;
         path->fromY = none;
         path->distance = distance;
+        path->blocked = blocked;
 
         createPath(path, getPosition(path->x - 1, path->y), blocked);
         createPath(path, getPosition(path->x, path->y - 1), blocked);
@@ -138,7 +172,7 @@ void Board::showPath(int x, int y, int distance, int blocked)
     }
 }
 
-void Board::hidePath()
+void Board::hidePath(int blocked)
 {
     if(path)
     {
@@ -157,7 +191,7 @@ void Board::hidePath()
         path->fromX = none;
         path->fromY = none;
         path->distance = none;
-        path->blocked = none;
+        path->blocked = blocked;
 
         path = nullptr;
     }

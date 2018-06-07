@@ -73,7 +73,7 @@ void Game::handleEvent()
             current->onCursorMoved(mouseX, mouseY);
         }
 
-        if(event.button.button == SDL_BUTTON_LEFT /*&& event.button.state == SDL_RELEASED*/)
+        if(event.button.button == SDL_BUTTON_LEFT && event.button.state == SDL_RELEASED)
         {
             const int mouseX = window->scaledX(event.button.x);
             const int mouseY = window->scaledY(event.button.y);
